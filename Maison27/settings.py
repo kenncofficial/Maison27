@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+import django_heroku
+import dj_database_url
+from decouple import config
+
 
 import cloudinary
 import cloudinary.uploader
@@ -27,9 +31,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '@5s5by-a8y-qg7am8ehj-jjrrj=^&(a_cd^hj1t*^qtlcea3xh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['maison27.herokuapp.com', '127.0.0.1:8000']
 
 
 # Application definition
@@ -49,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -134,7 +139,7 @@ STATIC_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 MEDIA_URL = '/media/'
@@ -150,3 +155,5 @@ cloudinary.config(
   api_key = "555798836564581", 
   api_secret = "dE_Z-YtkOFSngMrwQLqYA1Zd2oU",
 )
+
+django_heroku.settings(locals())
