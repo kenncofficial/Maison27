@@ -1,0 +1,123 @@
+{% extends 'blog_list.html' %}
+{% load static %}
+{% block content %}
+  <!-- SECTION -->
+  
+  <!-- /SECTION -->
+
+  <!-- SECTION -->
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <div class="col-md-8">
+          <!-- row -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <h2 class="title">SUPPLY CATEGORIES</h2>
+              </div>
+            </div>
+            
+            
+          </div>
+          <!-- /row -->
+
+          <!-- row -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-title">
+                <h2 class="title">{{ cats }}</h2>
+              </div>
+            </div>
+            {% if category_posts %}
+            <!-- post -->
+            {% for General_Supplies in category_posts %}
+            <div class="col-md-4">
+              <div class="post post-sm">
+                <a class="post-img" href="{% url 'supply_details' General_Supplies.pk %}"><img src="{{ General_Supplies.image.url }}" alt=""></a>
+                <div class="post-body">
+                  <div class="post-category">
+                    <a href="#">{{ General_Supplies.supply_category }}</a>
+                  </div>
+                  <h3 class="post-title title-sm"><a href="{% url 'supply_details' General_Supplies.pk %}">{{ General_Supplies.name }}</a></h3>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            {% else %}
+          <h1>Sorry this category has no content</h1>
+          {% endif %}
+            <!-- /post -->
+          </div>
+          <!-- /row -->       
+            <!-- post -->
+           
+         
+          <!-- /row -->
+        </div>
+        
+        <div class="col-md-4">
+          
+          <hr />
+          <!-- social widget -->
+          <div class="aside-widget">
+            <div class="section-title">
+              <h2 class="title">Social Media</h2>
+            </div>
+            <div class="social-widget">
+              <ul>
+                <li>
+                  <a href="#" class="social-facebook">
+                    <i class="fa fa-facebook"></i>
+                    <span></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="social-twitter">
+                    <i class="fa fa-twitter"></i>
+                    <span></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="social-google-plus">
+                    <i class="fa fa-instagram"></i>
+                    <span></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- /social widget -->
+
+          
+          
+         
+
+
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /SECTION -->
+
+  <!-- SECTION -->
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+       
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /SECTION -->
+
+ 
+{% endblock %}
+  

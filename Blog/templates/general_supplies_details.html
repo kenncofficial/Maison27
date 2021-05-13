@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+    
+    <section class="hero-wrap hero-wrap-2" style="background-image: url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGhvdXNlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60);" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate pb-0 text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="blog.html">General Supplies <i class="fa fa-chevron-right"></i></a></span> <span>Supply Details <i class="fa fa-chevron-right"></i></span></p>
+            <h1 class="mb-3 bread">Supply Details</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ftco-animate">
+          	<p>
+              <img src="{{ general_supplies.image.url }}" alt="" class="img-fluid">
+            </p>
+            <h2 class="mb-3"><b>{{ general_supplies.name }}</b></h2>
+            {% if user.is_superuser %}
+                  <div><span>(<i class="icofont-pen"></i> <a href="{% url 'update_post' general_supplies.pk %}">Edit</a> |
+                   <i class="icofont-bin"></i> <a href="{% url 'Delete_post' general_supplies.pk %}">Delete</a>)</span></div>
+                  {% endif %}
+            <hr />
+            <p>{{ general_supplies.Description|safe }}<p>
+          </div> <!-- .col-md-8 -->
+          
+
+          <div class="col-md-4 sidebar ftco-animate"> 
+           <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">DO YOU WANT THIS?</h2>
+              <ol>
+              <li><p>Send us an email by clicking here (<a href="mailto:maison27nigerialtd@gmail.com?subject=EMail from maison27 website"><span class="icon fa fa-envelope pr-4"></span><span class="text">Maison27nigerialtd@gmail.com</span></a>)</p></li>
+              <li>List the name of the item as well as the amount you want to be deliverd.</li>
+              <li>Make sure your location is added as well.</li>
+              <li>After your Email has been recieved, we will respond with the price list and billing.</li>
+              <li>Once this is done, just sit and wait for delivery.</li>
+              </ol>
+            </div>
+          </div>           
+            <div class="sidebar-box ftco-animate">
+              <div class="categories">
+                <h3><b>Supply Categories</b></h3>
+                {% for supply in cat_menu %}
+                <li><a href="{% url 'supply_category' supply|slugify %}">{{ supply|upper }}</a></li>
+                {% endfor %}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section> <!-- .section -->
+    {% endblock %}

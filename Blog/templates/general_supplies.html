@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    
+    <section class="hero-wrap hero-wrap-2" style="background-image: url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fGhvdXNlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60);" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate pb-0 text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>General Supplies <i class="fa fa-chevron-right"></i></span></p>
+            <h1 class="mb-3 bread">General Supplies</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row d-flex">
+          {% for General_Supplies in object_list %}
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry justify-content-end">
+              <div class="text">
+                <a href="{% url 'supply_details' General_Supplies.pk %}" class="block-20 img" style="background-image: url('{{ General_Supplies.image.url }}');">
+                </a>
+                <div class="meta mb-3">
+                  <div><a href="#" style="color:red;">{{ General_Supplies.supply_category }}</a></div>
+                </div>
+                <h3 class="heading"><a href="#">{{ General_Supplies.name }}</a></h3>
+                {% if user.is_superuser %}
+                  <div><span>(<i class="icofont-pen"></i> <a href="{% url 'update_supply' General_Supplies.pk %}">Edit</a> |
+                   <i class="icofont-bin"></i> <a href="{% url 'Delete_supply' General_Supplies.pk %}">Delete</a>)</span></div>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                      {% if is_paginated %}
+                        {% if page_obj.has_previous %}
+                          <li class="activate"><a href="?page={{ page_obj.has_previous_page_number }}"><i class="icofont-rounded-left"></i><<</a></li>
+                        {% endif %}
+                     
+                        {% if page_obj.has_next %}
+                          <li class="activate"><a href="?page={{ page_obj.next_page_number }}"><i class="icofont-rounded-right"></i>>></a></li>
+                        {% endif %}     
+                      {% endif %}
+                    </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>    
+
+  {% endblock %}
