@@ -1,1 +1,1 @@
-web: gunicorn Maison27.wsgi --log-file -
+web: gunicorn maison27.wsgi --log-file -
