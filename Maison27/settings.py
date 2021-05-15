@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ['maison27.herokuapp.com', '127.0.0.1:8000']
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +49,7 @@ INSTALLED_APPS = [
     'Blog',
     'ckeditor',
     'maison_auth',
-    'taggit'
+    'taggit',
 ]
 
 MIDDLEWARE = [
