@@ -28,10 +28,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@5s5by-a8y-qg7am8ehj-jjrrj=^&(a_cd^hj1t*^qtlcea3xh'
+SECRET_KEY = os.environ.get('MAISON27_SECRETE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['maison27.herokuapp.com', '127.0.0.1:8000']
 
@@ -130,8 +130,7 @@ DATABASES = {
     }
 
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
