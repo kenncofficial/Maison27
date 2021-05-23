@@ -1,0 +1,40 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 04/06/2020 04:07
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.e09610573525.eot");
+  src: url("./Flaticon.e09610573525.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.d61a97696261.woff2") format("woff2"),
+       url("./Flaticon.e72cdbfb6940.woff") format("woff"),
+       url("./Flaticon.6bf41971fba5.ttf") format("truetype"),
+       url("./Flaticon.77174c65a46f.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.77174c65a46f.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.flaticon-business:before { content: "\f100"; }
+.flaticon-home:before { content: "\f101"; }
+.flaticon-stats:before { content: "\f102"; }
+.flaticon-quarantine:before { content: "\f103"; }
+.flaticon-home-repair:before { content: "\f104"; }
+.flaticon-sales:before { content: "\f105"; }
+.flaticon-bank:before { content: "\f106"; }
+.flaticon-team:before { content: "\f107"; }
