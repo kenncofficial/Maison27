@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from django.urls import reverse
 from datetime import datetime, date
-from taggit.managers import TaggableManager
 from cloudinary.models import CloudinaryField
 
 # Create your models here.

@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'Blog',
     'ckeditor',
     'maison_auth',
-    'taggit',
 ]
 
 MIDDLEWARE = [
