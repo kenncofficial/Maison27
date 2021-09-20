@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import BlogPost, Supply_Category, General_Supplies, BlogComment, Category, About, Main_Service, Contact, Home_Layout, User_Profile
+from .models import BlogPost, Supply_Category, General_Supplies, BlogComment, About, Main_Service, Contact, Home_Layout, User_Profile
 # Register your models here.
 
 admin.site.register(BlogPost)
 admin.site.register(BlogComment)
-admin.site.register(Category)
+#admin.site.register(Category)
 admin.site.register(About)
 admin.site.register(Main_Service)
 admin.site.register(Contact)

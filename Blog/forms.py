@@ -1,12 +1,12 @@
 from django import forms
-from .models import BlogComment, Category, BlogPost, General_Supplies, Supply_Category
+from .models import BlogComment, BlogPost, General_Supplies, Supply_Category
 
-choices = Category.objects.all().values_list('name', 'name')
+#choices = Category.objects.all().values_list('name', 'name')
 
-choice_list = []
+#choice_list = []
 
-for item in choices:
-    choice_list.append(item)
+#for item in choices:
+ #   choice_list.append(item)
 
 #general supplies 
 
@@ -32,13 +32,13 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ('title','image', 'blog_quote', 'category', 'subtitle', 'author',\
+        fields = ('title','image', 'blog_quote', 'subtitle', 'author',\
                    'content',  'writers_name', 'writers_summery', 'side_summery',  'facebook_url', 'instagram_url', 'twitter_url' )
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'subtitle': forms.TextInput(attrs={'class': 'form-control'}),
-            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
+            #'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'author': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'elder', 'type': 'hidden'}),
 
             #'author': forms.Select(attrs={'class': 'form-control', 'value': '', 'id': 'elder', 'type': 'hidden'}),
@@ -55,13 +55,13 @@ class PostForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ('title','image', 'blog_quote','category', 'subtitle',\
+        fields = ('title','image', 'blog_quote', 'subtitle',\
                    'content',  'writers_name', 'writers_summery', 'side_summery',  'facebook_url', 'instagram_url', 'twitter_url' )
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'subtitle': forms.TextInput(attrs={'class': 'form-control'}),
-            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
+            #'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}),
             'facebook_url': forms.TextInput(attrs={'class': 'form-control'}),
             'instagram_url': forms.TextInput(attrs={'class': 'form-control'}),

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, ContactView, AddSupplyCategoryView, DeleteSupplyView, UpdateSupplyView,  GeneralSuppliesListView, AddSupplyView, SupplyCategoryDetailView, GeneralSuppliesDetailView, AddCategoryView, BlogListView, AboutView, ServiceView, UpdateCommentView, DeletePostView, AddPostView, UpdatePostView, DeleteCommentView, BlogPostDetailView, CategoryDetailView
+from .views import HomeView, ContactView, AddSupplyCategoryView, DeleteSupplyView, UpdateSupplyView,  GeneralSuppliesListView, AddSupplyView, SupplyCategoryDetailView, GeneralSuppliesDetailView, BlogListView, AboutView, ServiceView, UpdateCommentView, DeletePostView, AddPostView, UpdatePostView, DeleteCommentView, BlogPostDetailView
 
 urlpatterns = [
 
@@ -15,9 +15,9 @@ urlpatterns = [
     path('supply/<int:pk>/update_supply', UpdateSupplyView.as_view(), name='update_supply'),
     path('supply/<int:pk>/delete', DeleteSupplyView.as_view(), name='Delete_supply'),
 
-    path('category/<str:cats>/', CategoryDetailView, name='category_detail'),
+    #path('category/<str:cats>/', CategoryDetailView, name='category_detail'),
     path('add_post/', AddPostView.as_view(), name='add_post'),
-    path('add_category/', AddCategoryView.as_view(), name='add_category'),
+    #path('add_category/', AddCategoryView.as_view(), name='add_category'),
     path('article/edit/<int:pk>', UpdatePostView.as_view(), name='update_post'),
     path('article/<int:pk>/delete', DeletePostView.as_view(), name='Delete_post'),
     path('services/', ServiceView.as_view(), name='services'),

@@ -41,11 +41,7 @@ class Contact(models.Model):
     Email = models.EmailField(max_length=255)
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.name
 
 class User_Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
