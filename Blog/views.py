@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from .models import BlogPost, BlogComment, Supply_Category, General_Supplies, About, Main_Service, Contact, Home_Layout
+from .models import BlogPost, BlogComment, General_Supplies, About, Main_Service, Contact, Home_Layout
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from .forms import EditCommentForm, EditSupplyForm, CommentForm, PostForm, EditForm, AddSupplyForm
@@ -47,9 +47,9 @@ class GeneralSuppliesListView(ListView):
     paginate_by = 8
 
     def get_context_data(self, *args, **kwargs):
-        cat_menu = Supply_Category.objects.all()
+        #cat_menu = Supply_Category.objects.all()
         context = super(GeneralSuppliesListView, self).get_context_data(*args, **kwargs)
-        context["cat_menu"] = cat_menu
+        #context["cat_menu"] = cat_menu
         context["General_Supplies"] = self.queryset 
         return context
 ###################################################################################################
@@ -62,21 +62,15 @@ class GeneralSuppliesDetailView(DetailView):
     template_name = 'general_supplies_details.html'
 
     def get_context_data(self, *args, **kwargs):
-        cat_menu = Supply_Category.objects.all()
+        #cat_menu = Supply_Category.objects.all()
         context = super(GeneralSuppliesDetailView, self).get_context_data(*args, **kwargs)
-        context["cat_menu"] = cat_menu
+        #context["cat_menu"] = cat_menu
         context["General_Supply"] = General_Supplies.objects.all()
         return context
 ###################################################################################################
 
 
 
-#######----------------- General Supplies Category Detail View
-def SupplyCategoryDetailView(request, cats):
-    category_posts = General_Supplies.objects.filter(supply_category=cats.replace('-', ' '))
-    return render(request, 'supply_category.html',
-                  {'cats': cats.title().replace('-', ' '), 'category_posts': category_posts})
-###################################################################################################
 
 
 
@@ -98,14 +92,6 @@ class UpdateSupplyView( RedirectToProviousMixin, UpdateView):
 ###################################################################################################
 
 
-#####------------------ Add Category View
-class AddSupplyCategoryView(CreateView):
-    model = Supply_Category
-    # form_class = PostForm
-    template_name = 'add_Supply_category.html'
-    fields = '__all__'
-    success_url = reverse_lazy('home')
-###################################################################################################
 
 
 

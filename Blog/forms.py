@@ -1,5 +1,5 @@
 from django import forms
-from .models import BlogComment, BlogPost, General_Supplies, Supply_Category
+from .models import BlogComment, BlogPost, General_Supplies
 
 #choices = Category.objects.all().values_list('name', 'name')
 
@@ -10,12 +10,12 @@ from .models import BlogComment, BlogPost, General_Supplies, Supply_Category
 
 #general supplies 
 
-options = Supply_Category.objects.all().values_list('name', 'name')
+#options = Supply_Category.objects.all().values_list('name', 'name')
 
-option_list = []
+#option_list = []
 
-for supply in options:
-    option_list.append(supply)
+#for supply in options:
+ #   option_list.append(supply)
 
 
 
@@ -83,21 +83,21 @@ class EditCommentForm(forms.ModelForm):
 class AddSupplyForm(forms.ModelForm):
     class Meta:
         model = General_Supplies
-        fields = ('name', 'image', 'supply_category', 'Description')
+        fields = ('name', 'image', 'Description')
 
         widgets = {
         'name': forms.TextInput(attrs={'class': 'form-control'}),
-        'supply_category': forms.Select(choices=option_list, attrs={'class': 'form-control'}),
+        #'supply_category': forms.Select(choices=option_list, attrs={'class': 'form-control'}),
         'Description': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
 class EditSupplyForm(forms.ModelForm):
     class Meta:
         model = General_Supplies
-        fields = ('name', 'image', 'supply_category', 'Description')
+        fields = ('name', 'image', 'Description')
 
         widgets = {
         'name': forms.TextInput(attrs={'class': 'form-control'}),
-        'supply_category': forms.Select(choices=option_list, attrs={'class': 'form-control'}),
+        #'supply_category': forms.Select(choices=option_list, attrs={'class': 'form-control'}),
         'Description': forms.Textarea(attrs={'class': 'form-control'}),
         }

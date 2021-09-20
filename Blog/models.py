@@ -15,11 +15,7 @@ class About(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
 
-class Supply_Category(models.Model):
-    name = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.name
 
 class General_Supplies(models.Model):
     name = models.CharField(max_length=255)
