@@ -15,12 +15,16 @@ class About(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
 
+class Supply_Categorys(models.Model):
+    name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
 
 class General_Supplies(models.Model):
     name = models.CharField(max_length=255)
     image = CloudinaryField('image', null=True, blank=True)
-    supply_category = models.CharField(max_length=255, default='uncategorize')
+    supply_categorys = models.CharField(max_length=255, default='uncategorize')
     Description = RichTextField(blank=True, null=True)
     
     def __str__(self):
@@ -37,7 +41,11 @@ class Contact(models.Model):
     Email = models.EmailField(max_length=255)
 
 
+class Categorys(models.Model):
+    name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
 
 class User_Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
@@ -57,7 +65,7 @@ class BlogPost(models.Model):
     subtitle = models.CharField(max_length=255)
     image = CloudinaryField('image', null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.CharField(max_length=255, default='uncategorize')
+    categorys = models.CharField(max_length=255, default='uncategorize')
     content = RichTextField(blank=True, null=True)
     date_posted = models.DateField(auto_now_add=True)
     blog_quote = models.CharField(max_length=500, blank=True)
@@ -88,4 +96,3 @@ class   BlogComment(models.Model):
 
     def get_absolute_url(self):
         return reverse('update_comment', kwargs={'pk': self.pk})
-

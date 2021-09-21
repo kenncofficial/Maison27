@@ -406,7 +406,7 @@
 								<a class="post-img" href="{% url 'BlogPost-details' BlogPost.pk %}"><img src="{{ BlogPost.image.url }}" alt=""></a>
 								<div class="post-body">
 									<div class="post-category">
-										<a href="category.html">{{ BlogPost.category }}</a>
+										<a href="category.html">{{ BlogPost.categorys }}</a>
 									</div>
 									<h3 class="post-title"><a href="{% url 'BlogPost-details' BlogPost.pk %}">{{ BlogPost.title }}</a></h3>
 									<ul class="post-meta">
@@ -415,7 +415,7 @@
 										{% if user.is_superuser %}
 						                <li>(<i class="icofont-pen"></i> <a href="{% url 'update_post' BlogPost.pk %}">Edit</a> </li>|
                    					 	<li><i class="icofont-bin"></i> <a href="{% url 'Delete_post' BlogPost.pk %}">Delete</a>)</li>
-						                  {% endif %}
+						        {% endif %}
 									</ul>
 								</div>
 							</div>
