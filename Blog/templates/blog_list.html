@@ -321,13 +321,13 @@
 										{% if user.is_superuser %}
 										<li> <a href="{% url 'add_post' %}" class="dropdown-item"><i class="fa fa-user-o"></i> &nbsp; Add Post</a></li>
 
-										<li> <a href="" class="dropdown-item"><i class="fa fa-calendar-o"></i> &nbsp; Add Category</a></li>
+										<li> <a href="{% url 'add_category' %}" class="dropdown-item"><i class="fa fa-calendar-o"></i> &nbsp; Add Category</a></li>
 
 										<li><a href="{% url 'edit_profile' %}" class="dropdown-item"><i class="fa fa-sliders"></i> &nbsp; Edit Profile</a></li>
 
 										<li><a href="{% url 'add_supply' %}" class="dropdown-item"><i class="fa ftco-animate"></i>Add Supply</a></li>
 
-              							<li><a href="" class="dropdown-item"><i class="fa fa-calendar-o"></i>  Add Supply Category</a></li>
+              							<li><a href="{% url 'add_supply_category' %}" class="dropdown-item"><i class="fa fa-calendar-o"></i>  Add Supply Category</a></li>
 
 										<li><a href="{% url 'logout' %}" class="dropdown-item"><i class="material-icons">&#xE8AC;</i>&nbsp;  Logout</a></li>
 
@@ -574,7 +574,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					</div>
 				</div>
 				
-						Copyright &copy;<script>document.write(new Date().getFullYear());</script> | Website created by <a href="https://kennc.herokuapp.com" target="_blank">kenn.c_official</a>
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> | Website created by <a href="https://kenncofficial.herokuapp.com" target="_blank">kenn.c_official</a>
 					
 			</div>
 			<!-- /row -->
