@@ -25,7 +25,7 @@ class Supply_Category(models.Model):
 class General_Supplies(models.Model):
     name = models.CharField(max_length=255)
     image = CloudinaryField('image', null=True, blank=True)
-    supply_categorys = models.CharField(max_length=255, default='uncategorize')
+    supply_category = models.CharField(max_length=255, default='uncategorize')
     Description = RichTextField(blank=True, null=True)
     
     def __str__(self):
@@ -67,7 +67,7 @@ class BlogPost(models.Model):
     subtitle = models.CharField(max_length=255)
     image = CloudinaryField('image', null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    categorys = models.CharField(max_length=255, default='uncategorize')
+    category = models.CharField(max_length=255, default='uncategorize')
     content = RichTextField(blank=True, null=True)
     date_posted = models.DateField(auto_now_add=True)
     blog_quote = models.CharField(max_length=500, blank=True)
