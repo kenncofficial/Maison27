@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from .models import BlogPost, BlogComment, Categorys, Supply_Categorys, General_Supplies, About, Main_Service, Contact, Home_Layout
+from .models import BlogPost, BlogComment, General_Supplies, About, Main_Service, Contact, Home_Layout
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from .forms import EditCommentForm, EditSupplyForm, CommentForm, PostForm, EditForm, AddSupplyForm
@@ -13,9 +13,9 @@ class HomeView(ListView):
     queryset = Home_Layout.objects.all()
 
     def get_context_data(self, *args, **kwargs):
-        cat_menu = Categorys.objects.all()
+        #cat_menu = Categorys.objects.all()
         context = super(HomeView, self).get_context_data(*args, **kwargs)
-        context["cat_menu"] = cat_menu
+        #context["cat_menu"] = cat_menu
         context["Abouts"] = About.objects.all()[:1]
         context["Main_Services"] = Main_Service.objects.all()
         context["BlogPosts"] =  BlogPost.objects.all().order_by('-date_posted')[:4]
@@ -47,9 +47,9 @@ class GeneralSuppliesListView(ListView):
     paginate_by = 8
 
     def get_context_data(self, *args, **kwargs):
-        cat_menu = Supply_Categorys.objects.all()
+        #cat_menu = Supply_Categorys.objects.all()
         context = super(GeneralSuppliesListView, self).get_context_data(*args, **kwargs)
-        context["cat_menu"] = cat_menu
+        #context["cat_menu"] = cat_menu
         context["General_Supplies"] = self.queryset 
         return context
 ###################################################################################################
@@ -62,9 +62,9 @@ class GeneralSuppliesDetailView(DetailView):
     template_name = 'general_supplies_details.html'
 
     def get_context_data(self, *args, **kwargs):
-        cat_menu = Supply_Categorys.objects.all()
+        #cat_menu = Supply_Categorys.objects.all()
         context = super(GeneralSuppliesDetailView, self).get_context_data(*args, **kwargs)
-        context["cat_menu"] = cat_menu
+        #context["cat_menu"] = cat_menu
         context["General_Supply"] = General_Supplies.objects.all()
         return context
 ###################################################################################################
@@ -103,12 +103,12 @@ class UpdateSupplyView( RedirectToProviousMixin, UpdateView):
 
 
 #####------------------ Add Category View
-class AddSupplyCategoryView(CreateView):
-    model = Supply_Categorys
-    # form_class = PostForm
-    template_name = 'add_Supply_category.html'
-    fields = '__all__'
-    success_url = reverse_lazy('home')
+#class AddSupplyCategoryView(CreateView):
+ #   model = Supply_Categorys
+  #  # form_class = PostForm
+   # template_name = 'add_Supply_category.html'
+    #fields = '__all__'
+    #success_url = reverse_lazy('home')
 ###################################################################################################
 
 
@@ -133,9 +133,9 @@ class BlogListView(ListView):
     paginate_by = 6
 
     def get_context_data(self, *args, **kwargs):
-        cat_menu = Categorys.objects.all()
+        #cat_menu = Categorys.objects.all()
         context = super(BlogListView, self).get_context_data(*args, **kwargs)
-        context["cat_menu"] = cat_menu
+        #context["cat_menu"] = cat_menu
         context["Main_Services"] = Main_Service.objects.all()
         context["Blog_lists"] = self.queryset 
         return context
@@ -149,9 +149,9 @@ class BlogPostDetailView(DetailView):
 
 
     def get_context_data(self, *args, **kwargs):
-        cat_menu = Categorys.objects.all()
+        #cat_menu = Categorys.objects.all()
         context = super(BlogPostDetailView, self).get_context_data(*args, **kwargs)
-        context["cat_menu"] = cat_menu
+        #context["cat_menu"] = cat_menu
         context["BlogPosts"] =  BlogPost.objects.all().order_by('-date_posted')[:3]
         #context["related_items"] = self.object.tags.similar_objects()[:5]
         comments_connected = BlogComment.objects.filter(blogpost_connected=self.get_object()).order_by('-date_posted')
@@ -173,10 +173,10 @@ class BlogPostDetailView(DetailView):
 
 
 #######----------------- Category Detail View
-def CategoryDetailView(request, cats):
-    category_posts = BlogPost.objects.filter(categorys=cats.replace('-', ' '))
-    return render(request, 'category_detail.html',
-                  {'cats': cats.title().replace('-', ' '), 'category_posts': category_posts})
+#def CategoryDetailView(request, cats):
+ #   category_posts = BlogPost.objects.filter(categorys=cats.replace('-', ' '))
+  #  return render(request, 'category_detail.html',
+   #               {'cats': cats.title().replace('-', ' '), 'category_posts': category_posts})
 ###################################################################################################
 
 
@@ -195,12 +195,12 @@ class AddPostView(CreateView):
 
 
 #####------------------ Add Category View
-class AddCategoryView(CreateView):
-    model = Categorys
+#class AddCategoryView(CreateView):
+ #   model = Categorys
     # form_class = PostForm
-    template_name = 'add_category.html'
-    fields = '__all__'
-    success_url = reverse_lazy('home')
+  #  template_name = 'add_category.html'
+   # fields = '__all__'
+    #success_url = reverse_lazy('home')
 ###################################################################################################
 
 

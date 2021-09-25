@@ -15,11 +15,7 @@ class About(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
 
-class Supply_Categorys(models.Model):
-    name = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.name
 
 class General_Supplies(models.Model):
     name = models.CharField(max_length=255)
@@ -41,11 +37,7 @@ class Contact(models.Model):
     Email = models.EmailField(max_length=255)
 
 
-class Categorys(models.Model):
-    name = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.name
 
 class User_Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
