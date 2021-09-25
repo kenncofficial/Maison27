@@ -36,6 +36,11 @@ class Contact(models.Model):
     phone = models.IntegerField()
     Email = models.EmailField(max_length=255)
 
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 
 
